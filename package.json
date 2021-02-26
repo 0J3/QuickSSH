@@ -1,6 +1,17 @@
 {
 	"type": "module",
 	"dependencies": {
-		"prompts": "^2.4.0"
-	}
+		"@types/node": "^14.14.31",
+		"cmdify": "^0.0.4",
+		"fs-extra": "^9.1.0",
+		"js-yaml": "^4.0.0",
+		"node-yaml": "^4.0.1",
+		"prompts": "^2.4.0",
+		"semver": "^7.3.4"
+	},
+	"name": "quickssh",
+	"version": "0.0.1",
+	"main": "index.js",
+	"author": "0J3 <0J3@wafflepowered.com>",
+	"license": "MIT"
 }
