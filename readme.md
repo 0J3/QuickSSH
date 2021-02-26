@@ -1,6 +1,6 @@
 # QuickSSH
 
-Quickly start your SSH
+Quickly connect to SSH without bothering to wait for a terminal like terminus to open, or to type a command in manually if you're really lazy and don't use something like terminus
 
 ---
 
@@ -20,7 +20,7 @@ Run `add.sh` / `add.bat` and follow the instructions.
 
 ### Removing a host
 
-SoonTM
+SoonTM (or remove entries from list.yml)
 
 ### Connecting to a host
 
@@ -32,3 +32,7 @@ run `connect.sh` / `connect.bat` and select a host.
 2. Find the host under the `data` key.
 3. Edit said label to whatever you want.
 4. Save.
+
+## Why did I make this?
+
+because someone keeps asking me to do shit on their vps and i cba to wait for [terminus](https://www.electronjs.org/apps/terminus) (the cmd i primarily use) to open every time.
