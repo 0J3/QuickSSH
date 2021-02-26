@@ -16,6 +16,8 @@ const labels = {
 		/*chalk.rgb(122, 0, 255)*/ 'Enter a command to run after connecting [/bin/bash]:',
 };
 
+process.title = 'QuickSSH > Add';
+
 (async () => {
 	let { ip, port, command } = await prompts([
 		{

@@ -8,6 +8,8 @@ import semver from 'semver';
 import prompts from 'prompts';
 import { exec } from 'child_process';
 
+process.title = 'QuickSSH > Connect';
+
 const CMDCommand = process.platform == 'win32' ? 'start cmd /C' : '/bin/bash';
 (async () => {
 	const listLocation = resolve('list.yml');
@@ -60,33 +62,37 @@ const CMDCommand = process.platform == 'win32' ? 'start cmd /C' : '/bin/bash';
 	const options = {
 		type: 'multiselect',
 		name: 'target',
-		message: 'Select the Address to connect to',
+		message: 'Select the Address(es) to connect to',
 		hint:
 			'Space/Left Arrow/Right Arrow to select. Return to submit. Up/Down arrows to navigate.',
 		choices,
 		min: 1,
-		max: 1,
 		instructions: '',
 		style: 'emoji',
 	};
 
-	let response = (await prompts(options)).target[0];
+	let response = (await prompts(options)).target;
 
 	if (!response) {
 		return fatal('No Response Recieved. (Potential CTRL+C)');
 	} else {
-		success(`Connecting to ${response.label}`, response.command);
-		exec(`${CMDCommand} ${response.command}`, (err, stdout, stderr) => {
-			if (err) {
-				fatal(
-					`An error was encountered while running ${CMDCommand} ${response.command}.
+		success(
+			`You may close this window/CTRL+C this command once the other one(s) has opened.`
+		);
+		response.forEach(item => {
+			success(`Connecting to ${item.label}...`, item.command);
+			exec(`${CMDCommand} ${item.command}`, (err, stdout, stderr) => {
+				if (err) {
+					fatal(
+						`An error was encountered while running ${CMDCommand} ${item.command}.
 err: ${err}
 stdout: ${stdout}
 stderr: ${stderr}`
-				);
-				return;
-			}
-			success('Target Reached: Launched SSH!');
+					);
+					return;
+				}
+				success('Target Reached: Finish!');
+			});
 		});
 	}
 })();
