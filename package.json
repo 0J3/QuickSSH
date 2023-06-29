@@ -7,7 +7,7 @@
 		"js-yaml": "^4.0.0",
 		"node-yaml": "^4.0.1",
 		"prompts": "^2.4.0",
-		"semver": "^7.3.4"
+		"semver": "^7.5.2"
 	},
 	"name": "quickssh",
 	"version": "0.0.1",
